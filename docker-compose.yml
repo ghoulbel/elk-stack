@@ -99,6 +99,7 @@ services:
       retries: 120
 
   kibana:
+    restart: always
     depends_on:
       es01:
         condition: service_healthy
@@ -131,6 +132,7 @@ services:
       retries: 120
 
   logstash01:
+    restart: always
     depends_on:
       es01:
         condition: service_healthy
