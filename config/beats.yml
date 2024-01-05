@@ -1,0 +1,17 @@
+
+# ------------------------------ Logstash Output -------------------------------
+output.logstash:
+  # The Logstash hosts
+  hosts: ["bz-wso-006:5400"]
+  loadbalance: true
+  index: metricbeat
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  ssl.certificate_authorities: ["/etc/ca.crt"]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: "/etc/client.crt"
+  # Client Certificate Key
+  #ssl.key: "/etc/client.key"
+
