@@ -33,14 +33,23 @@ services:
          "    dns:\n"\
          "      - es01\n"\
          "      - localhost\n"\
+         "      - bz-wso-006\n"\
          "    ip:\n"\
-         "      - 127.0.0.1\n"\
+         "      - 172.30.20.136\n"\
          "  - name: kibana\n"\
          "    dns:\n"\
          "      - kibana\n"\
          "      - localhost\n"\
+         "      - bz-wso-006\n"\
          "    ip:\n"\
-         "      - 127.0.0.1\n"\
+         "      - 172.30.20.136\n"\
+         "  - name: logstash01\n"\
+         "    dns:\n"\
+         "      - logstash01\n"\
+         "      - localhost\n"\
+         "      - bz-wso-006\n"\
+         "    ip:\n"\
+         "      - 172.30.20.136\n"\
          > config/certs/instances.yml;
          bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;
          unzip config/certs/certs.zip -d config/certs;
@@ -150,7 +159,7 @@ services:
       - /data/elk/logstash/data01:/usr/share/logstash/data:z
       - /data/elk/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:z
     ports:
-      - ${LOGSTASH_PORT}:5400
+      - 5400:5400
     environment:
       - xpack.monitoring.enabled=false
       - ELASTIC_USER=elastic
